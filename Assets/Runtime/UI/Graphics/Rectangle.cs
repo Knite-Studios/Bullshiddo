@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,40 +6,34 @@ using UnityEngine.UI;
 namespace Oculus.Interaction.Bullshiddo
 {
     /// <summary>
-    /// Custom graphic type for rounded rectangles
+    /// Custom graphic type for rounded rectangles.
     /// Based on https://gist.github.com/markeahogan/6620e2c26095752933c811690257f9ab
     /// </summary>
     [RequireComponent(typeof(CanvasRenderer))]
     public class Rectangle : MaskableGraphic
     {
-        readonly static Vector3 _rightUp = new Vector2(1, 1);
-        readonly static Vector3 _rightDown = new Vector2(1, -1);
-        readonly static Vector3 _leftDown = new Vector2(-1, -1);
-        readonly static Vector3 _leftUp = new Vector2(-1, 1);
-        readonly static Vector3[] _insetDirections = new Vector3[] { _rightUp, _rightDown, _leftDown, _leftUp };
+        private static readonly Vector3 _rightUp = new Vector2(1, 1);
+        private static readonly Vector3 _rightDown = new Vector2(1, -1);
+        private static readonly Vector3 _leftDown = new Vector2(-1, -1);
+        private static readonly Vector3 _leftUp = new Vector2(-1, 1);
+        private static readonly Vector3[] _insetDirections = new Vector3[] { _rightUp, _rightDown, _leftDown, _leftUp };
 
         [SerializeField] private Sprite _sprite;
 
-        [SerializeField]
-        int _divisions = 12;
-        [SerializeField]
-        private float _radius = 12;
-        [SerializeField]
-        private float _stroke = 0;
-        [SerializeField]
-        private float _antiAlias = 0;
-        [SerializeField, Range(1, 12)]
-        private int _shadowQuality = 1;
+        [SerializeField] private int _divisions = 12;
+        [SerializeField] private float _radius = 12;
+        [SerializeField] private float _stroke = 0;
+        [SerializeField] private float _antiAlias = 0;
+        [SerializeField, Range(1, 12)] private int _shadowQuality = 1;
 
         [Header("Linear Gradient")]
-        [SerializeField] float _angle = 180;
-        [SerializeField] Color32 _startColor = Color.white;
-        [SerializeField] Color32 _endColor = Color.white;
-        [SerializeField] List<Shadow> _dropShadows = new List<Shadow>();
-        [SerializeField] List<Shadow> _innerShadows = new List<Shadow>();
+        [SerializeField] private float _angle = 180;
+        [SerializeField] private Color32 _startColor = Color.white;
+        [SerializeField] private Color32 _endColor = Color.white;
+        [SerializeField] private List<Shadow> _dropShadows = new List<Shadow>();
+        [SerializeField] private List<Shadow> _innerShadows = new List<Shadow>();
 
-        [SerializeField, Tooltip("Use a more optimized Raycast " +
-            "function that assumes no canvas sorting overrides")]
+        [SerializeField, Tooltip("Use a more optimized Raycast function that assumes no canvas sorting overrides")]
         private bool _optimizedRaycast = true;
 
         public Sprite sprite
@@ -190,7 +183,7 @@ namespace Oculus.Interaction.Bullshiddo
         {
             if (a.count == b.count)
             {
-                for (int i = 0; i < a.count -1; i++)
+                for (int i = 0; i < a.count - 1; i++)
                 {
                     int ai = a.start + i;
                     int bi = b.start + i;
@@ -199,14 +192,14 @@ namespace Oculus.Interaction.Bullshiddo
             }
             else if (a.count > b.count)
             {
-                // to bridge 2 circle segments when the inner (B) has less verts than the outer (A)
+                // To bridge 2 circle segments when the inner (B) has less verts than the outer (A)
                 // we'll maintain 2 indexes for A and B, B will be incremented in fractions
 
-                // calc how mush to incremement B when when we increment A by one
+                // Calc how much to increment B when we increment A by one
                 float bIncrement = b.count / (float)a.count;
                 float bFloatIndex = 0;
 
-                for (int i = 0; i < a.count-1; i++)
+                for (int i = 0; i < a.count - 1; i++)
                 {
                     int aIndex = a.start + i;
                     int bIndex = b.start + (int)bFloatIndex;
@@ -215,7 +208,7 @@ namespace Oculus.Interaction.Bullshiddo
 
                     bFloatIndex += bIncrement;
 
-                    // if bIndex changes to the next vert we need to make a triangle between the
+                    // If bIndex changes to the next vert we need to make a triangle between the
                     // two verts on B
                     var nextbIndex = b.start + (int)bFloatIndex;
                     if (nextbIndex != bIndex)
@@ -262,25 +255,25 @@ namespace Oculus.Interaction.Bullshiddo
         {
             var rect = rectTransform.rect;
             RectangleSegment result = default;
-            
+
             for (int i = 0; i < 4; i++)
             {
                 var inset = insets[i];
-                // inset controls how far from the edge the circle can be
-                // to prevent corners overlapping its clamped to half the size of the rect
+                // Inset controls how far from the edge the circle can be
+                // to prevent corners overlapping it's clamped to half the size of the rect
                 var clampedInset = Mathf.Min(Mathf.Min(rect.size.x / 2, rect.size.y / 2), inset);
                 var corner = GetCorner(rect, i);
                 var cornerOffset = corner + offset - _insetDirections[i] * clampedInset;
                 var radius = radii[i] - (inset - clampedInset);
 
-                // offset shifts the rects corners, to change shadows position
-                // clamp offset is used by inner shadows to force offset corners to stay in the main rect
+                // Offset shifts the rects corners, to change shadows position
+                // Clamp offset is used by inner shadows to force offset corners to stay in the main rect
                 if (clampOffset)
                 {
                     cornerOffset = ClampOffset(i, corner, cornerOffset, radius);
                 }
 
-                result[i] = AddCornerSegment(cornerOffset, i/4f, (i+1)/4f, radius, color, affectByGradient);
+                result[i] = AddCornerSegment(cornerOffset, i / 4f, (i + 1) / 4f, radius, color, affectByGradient);
             }
 
             return result;
@@ -288,10 +281,10 @@ namespace Oculus.Interaction.Bullshiddo
 
         private CornerSegment AddCornerSegment(Vector3 center, float from, float to, float radius, Color32 color, bool affectByGradient)
         {
-            // if the radius is less than half a pixel set it to zero to create less geometry
+            // If the radius is less than half a pixel set it to zero to create less geometry
             radius = radius < 0.5f ? 0 : radius;
 
-            // reduce the number of divisions for small radii
+            // Reduce the number of divisions for small radii
             float quarterCircumference = radius * 0.5f * Mathf.PI;
             float maxCircumference = 10 * Mathf.PI;
             int divisions = Mathf.CeilToInt(_divisions * Mathf.Clamp01(quarterCircumference / maxCircumference));
@@ -332,13 +325,13 @@ namespace Oculus.Interaction.Bullshiddo
 
         private void AddTri(int a, int b, int c)
         {
-            if (a == b || b == c || c == a) return; //dont add zero area tris
+            if (a == b || b == c || c == a) return; // Don't add zero area tris
             _indicies.Add(a);
             _indicies.Add(b);
             _indicies.Add(c);
         }
 
-        bool _shadowUVMode = false;
+        private bool _shadowUVMode = false;
 
         private Vector2 ToUV(Vector2 position)
         {
@@ -413,7 +406,7 @@ namespace Oculus.Interaction.Bullshiddo
             if (shadow.blur > 0)
             {
                 var outer = AddRectangle(centerInset, outerRadius, edgeColor, offset, false);
-                for (float i = 1; i <= _shadowQuality-1; i++)
+                for (float i = 1; i <= _shadowQuality - 1; i++)
                 {
                     float n = i / _shadowQuality;
                     var mid = AddRectangle(centerInset, Mathf.Lerp(outerRadius, innerRadius, n), Color.Lerp(edgeColor, middleColor, n * n), offset, false);
@@ -474,14 +467,14 @@ namespace Oculus.Interaction.Bullshiddo
 
         private float ClampRadiusToHalfRectSize(float radius)
         {
-            var halfSize = rectTransform.rect.size/2f;
+            var halfSize = rectTransform.rect.size / 2f;
             return Mathf.Clamp(radius, 0, Mathf.Min(halfSize.x, halfSize.y));
         }
 
         /// <summary>
-        /// returns the corners of the rect starting top right and moving clockwise
+        /// Returns the corners of the rect starting top right and moving clockwise.
         /// </summary>
-        Vector3 GetCorner(Rect rect, int index)
+        private Vector3 GetCorner(Rect rect, int index)
         {
             switch (index)
             {
@@ -515,7 +508,7 @@ namespace Oculus.Interaction.Bullshiddo
             return cornerOffset;
         }
 
-        static List<ICanvasRaycastFilter> _components = new List<ICanvasRaycastFilter>();
+        private static List<ICanvasRaycastFilter> _components = new List<ICanvasRaycastFilter>();
 
         public override bool Raycast(Vector2 sp, Camera eventCamera)
         {
@@ -570,8 +563,8 @@ namespace Oculus.Interaction.Bullshiddo
                 if (diff > 0) _dropShadows.RemoveRange(value, diff);
                 else while (diff++ < 0) _dropShadows.Add(default);
 
-                // we only need to mark dirty if shadows are removed
-                // new shadows start full transparent so there's no visual change
+                // We only need to mark dirty if shadows are removed
+                // New shadows start full transparent so there's no visual change
                 if (diff > 0) SetVerticesDirty();
             }
         }
@@ -585,7 +578,7 @@ namespace Oculus.Interaction.Bullshiddo
             public Color32 color;
         }
 
-        struct GradientHelper
+        private struct GradientHelper
         {
             private float _min;
             private float _range;
@@ -622,9 +615,9 @@ namespace Oculus.Interaction.Bullshiddo
         }
 
         /// <summary>
-        /// The 2 edges of an inner and outer corner that have been bridged
+        /// The 2 edges of an inner and outer corner that have been bridged.
         /// </summary>
-        struct BridgedCornerSegmentEdges
+        private struct BridgedCornerSegmentEdges
         {
             public int minA;
             public int minB;
@@ -641,9 +634,9 @@ namespace Oculus.Interaction.Bullshiddo
         }
 
         /// <summary>
-        /// A set of verts that have been added to the mesh that form a circle segment e.g. a rounded corner
+        /// A set of verts that have been added to the mesh that form a circle segment e.g. a rounded corner.
         /// </summary>
-        struct CornerSegment
+        private struct CornerSegment
         {
             public int start;
             public int count;
@@ -658,9 +651,9 @@ namespace Oculus.Interaction.Bullshiddo
         }
 
         /// <summary>
-        /// A set of 4 corners
+        /// A set of 4 corners.
         /// </summary>
-        struct RectangleSegment
+        private struct RectangleSegment
         {
             public CornerSegment topLeft;
             public CornerSegment topRight;
