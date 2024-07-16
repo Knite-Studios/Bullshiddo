@@ -3,22 +3,12 @@ guid: 3686151f70cbd7d45a27b87c11bce98e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GloveMat
-    second: {fileID: 2100000, guid: bf6b1cc2d0dffc34d8afb4b9d73c8ce7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GloveTargetMat
-    second: {fileID: 2100000, guid: 4dddfe8c90ed99a469c4628deaa27401, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 1
     materialSearch: 2
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

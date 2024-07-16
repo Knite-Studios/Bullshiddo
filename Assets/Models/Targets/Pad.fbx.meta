@@ -6,22 +6,12 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: PadBreakClip
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PadMat
-    second: {fileID: 2100000, guid: bf6b1cc2d0dffc34d8afb4b9d73c8ce7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PadTargetMat
-    second: {fileID: 2100000, guid: e77343810ac30624d9a81fe0b72ad604, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 1
     materialSearch: 2
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

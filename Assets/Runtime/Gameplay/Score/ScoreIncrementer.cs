@@ -65,5 +65,5 @@ namespace Oculus.Interaction.Bullshiddo
                 return _score.AddScore();
             }
         }
-    }
+    } 
 }
