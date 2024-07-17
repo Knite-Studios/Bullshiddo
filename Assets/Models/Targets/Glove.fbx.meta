@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Hand_Texture
-    second: {fileID: 2100000, guid: 73d011eb0002b554aacfbff22def60e3, type: 2}
+    second: {fileID: 2100000, guid: 4dddfe8c90ed99a469c4628deaa27401, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1
