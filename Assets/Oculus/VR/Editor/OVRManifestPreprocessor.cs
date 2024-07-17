@@ -485,13 +485,6 @@ public class OVRManifestPreprocessor
         if (OVRDeviceSelector.isTargetDeviceQuestFamily)
         {
             string targetDeviceValue = "";
-            if (OVRDeviceSelector.isTargetDeviceQuest)
-            {
-                if (string.IsNullOrEmpty(targetDeviceValue))
-                    targetDeviceValue = "quest";
-                else
-                    targetDeviceValue += "|quest";
-            }
             if (OVRDeviceSelector.isTargetDeviceQuest2)
             {
                 if (string.IsNullOrEmpty(targetDeviceValue))
