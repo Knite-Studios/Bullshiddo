@@ -1,14 +1,19 @@
 fileFormatVersion: 2
-guid: fec51e1fb4838b8498ee64945124ee1d
+guid: 23b3e338c352a434eb240c81bbc057e2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WorkOutTrackMat
+    second: {fileID: 2100000, guid: 73d011eb0002b554aacfbff22def60e3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
