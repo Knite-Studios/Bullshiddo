@@ -25,6 +25,8 @@ namespace Oculus.Interaction.Bullshiddo
         [SerializeField]
         private GameObject scoreUI; // Reference to the score UI canvas
         [SerializeField]
+        private GameObject comboUI; // Reference to the combo UI canvas
+        [SerializeField]
         private GameObject countdownUI; // Reference to the countdown GameObject
 
         private void Start()
@@ -37,6 +39,11 @@ namespace Oculus.Interaction.Bullshiddo
             if (scoreUI != null)
             {
                 scoreUI.SetActive(false); // Ensure score UI is turned off at start
+            }
+
+            if (comboUI != null)
+            {
+                comboUI.SetActive(false); // Ensure combo UI is turned off at start
             }
         }
 
@@ -51,6 +58,11 @@ namespace Oculus.Interaction.Bullshiddo
         public void SetScoreUIActive(bool isActive)
         {
             if (scoreUI != null) scoreUI.SetActive(isActive);
+        }
+
+        public void SetComboUIActive(bool isActive)
+        {
+            if (comboUI != null) comboUI.SetActive(isActive);
         }
 
         public void SetCountdownUIActive(bool isActive)
