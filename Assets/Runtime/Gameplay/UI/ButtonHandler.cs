@@ -25,9 +25,6 @@ namespace Oculus.Interaction.Bullshiddo
         [SerializeField]
         private CountdownUI countdownUI; // Reference to the CountdownUI script
 
-        [SerializeField]
-        private GameObject menuGameObject; // Reference to the Menu GameObject
-
         private void OnCollisionEnter(Collision collision)
         {
             Debug.Log($"Collision detected with: {collision.gameObject.name}");
@@ -71,12 +68,6 @@ namespace Oculus.Interaction.Bullshiddo
                 menuManager.SetMenuElementsActive(true);
                 menuManager.SetScoreUIActive(false); // Disable score UI if it was enabled
                 menuManager.SetCountdownUIActive(false); // Disable countdown UI
-            }
-
-            // Enable the menu GameObject
-            if (menuGameObject != null)
-            {
-                menuGameObject.SetActive(true);
             }
 
             stoppedDirector.stopped -= OnDirectorStopped;

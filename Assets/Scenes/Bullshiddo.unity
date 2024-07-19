@@ -1108,7 +1108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &92707065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5966,7 +5966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &279673424
 Transform:
   m_ObjectHideFlags: 0
@@ -6576,7 +6576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &385166747
 Transform:
   m_ObjectHideFlags: 0
@@ -7916,7 +7916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &467513772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9349,7 +9349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241000175187274, guid: c12f001b6ea0d1c4f9ab1975f7b8422c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14899997
+      value: 0.11910002
       objectReference: {fileID: 0}
     - target: {fileID: 4241000175187274, guid: c12f001b6ea0d1c4f9ab1975f7b8422c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9750,7 +9750,6 @@ GameObject:
   m_Component:
   - component: {fileID: 649904943}
   - component: {fileID: 649904946}
-  - component: {fileID: 649904945}
   - component: {fileID: 649904944}
   m_Layer: 0
   m_Name: Background
@@ -9802,18 +9801,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &649904945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649904942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2422892ee5045449d4aef5dcf66215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &649904946
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11526,7 +11513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4284235410734942, guid: c28f42d448414574ba705455801920cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.031399995
+      value: -0.06129995
       objectReference: {fileID: 0}
     - target: {fileID: 4284235410734942, guid: c28f42d448414574ba705455801920cb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18572,11 +18559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70831435181229d4c8436f5050f8315a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonAction: 1
+  buttonAction: 0
   director: {fileID: 1636940732}
   menuManager: {fileID: 37475608}
   countdownUI: {fileID: 1784036326}
-  menuGameObject: {fileID: 37475605}
 --- !u!4 &1047535366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2060686204860487271, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
@@ -19206,7 +19192,6 @@ MonoBehaviour:
   director: {fileID: 1034074815}
   menuManager: {fileID: 37475608}
   countdownUI: {fileID: 1784036326}
-  menuGameObject: {fileID: 37475605}
 --- !u!1001 &1140500816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61609,7 +61594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1532787228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61698,7 +61683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940069044865206, guid: cc7f6b10da9d0ba47820926d5a9da651, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0643
+      value: 0.03440005
       objectReference: {fileID: 0}
     - target: {fileID: 4940069044865206, guid: cc7f6b10da9d0ba47820926d5a9da651, type: 3}
       propertyPath: m_LocalPosition.y
@@ -61939,6 +61924,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5696412133370625583, guid: b17aa021020ec664bb5e4c08fce088cf, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -315549290304241336, guid: 8b152767953467e48846c97c36a39c44, type: 3}
     - target: {fileID: 5698939400820888941, guid: b17aa021020ec664bb5e4c08fce088cf, type: 3}
       propertyPath: _audioSource
       value: 
@@ -62512,7 +62501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1621129248
 Transform:
   m_ObjectHideFlags: 0
@@ -62946,7 +62935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4180931012806154, guid: a435cae83297246448675e1dceae9a74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.133
+      value: -0.1629
       objectReference: {fileID: 0}
     - target: {fileID: 4180931012806154, guid: a435cae83297246448675e1dceae9a74, type: 3}
       propertyPath: m_LocalPosition.y
@@ -78420,11 +78409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70831435181229d4c8436f5050f8315a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonAction: 2
+  buttonAction: 0
   director: {fileID: 0}
   menuManager: {fileID: 37475608}
   countdownUI: {fileID: 1784036326}
-  menuGameObject: {fileID: 37475605}
 --- !u!114 &2008381378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1625244264539095690, guid: 5d21fce6b09e0144fb01a4a9cb73ec76, type: 3}
