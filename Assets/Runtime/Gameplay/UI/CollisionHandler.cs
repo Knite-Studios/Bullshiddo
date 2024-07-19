@@ -1,59 +1,127 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Oculus.Interaction.Bullshiddo
 {
     /// <summary>
-    /// Handles collisions between two GameObjects. On collision, logs a message,
-    /// triggers a falling animation, and destroys the GameObject.
+    /// Handles collisions between button GameObjects to start gameplay, manage UI visibility, and play directors.
     /// </summary>
     public class CollisionHandler : MonoBehaviour
     {
+        [Header("Buttons")]
         [SerializeField]
-        private Vector3 fallStartPosition; // The start position for the falling animation
-
+        private GameObject playButton; // Reference to the Play button
         [SerializeField]
-        private Vector3 fallEndPosition; // The end position for the falling animation
-
+        private GameObject tutorialButton; // Reference to the Tutorial button
         [SerializeField]
-        private float fallDuration = 1.0f; // Duration of the falling animation
+        private GameObject quitButton; // Reference to the Quit button
 
-        private bool isFalling = false; // Flag to prevent multiple falls
+        [Header("Directors")]
+        [SerializeField]
+        private PlayableDirector tutorialDirector; // Reference to the tutorial PlayableDirector
+        [SerializeField]
+        private PlayableDirector mainSongDirector; // Reference to the main song PlayableDirector
 
-        /// <summary>
-        /// Called when this GameObject's collider first touches another collider.
-        /// Logs a message and starts the fall animation if not already falling.
-        /// </summary>
-        /// <param name="collision">The collision data.</param>
+        [Header("Countdown UI")]
+        [SerializeField]
+        private CountdownUI countdownUI; // Reference to the CountdownUI
+
+        [Header("Other UI Elements")]
+        [SerializeField]
+        private GameObject logoAndMetaSlot; // Reference to the combined logo and meta slot GameObject
+        [SerializeField]
+        private GameObject scoreUI; // Reference to the score UI canvas
+
         private void OnCollisionEnter(Collision collision)
         {
-            if (!isFalling)
+            Debug.Log($"Collision detected with: {collision.gameObject.name}");
+
+            // Check which button was pressed
+            if (collision.gameObject == playButton)
             {
-                Debug.Log("button pressed");
-                StartCoroutine(FallAndDestroy());
+                Debug.Log("Play button pressed");
+                PlayMainSong();
+            }
+            else if (collision.gameObject == tutorialButton)
+            {
+                Debug.Log("Tutorial button pressed");
+                StartTutorial();
+            }
+            else if (collision.gameObject == quitButton)
+            {
+                Debug.Log("Quit button pressed");
+                QuitGame();
             }
         }
 
-        /// <summary>
-        /// Coroutine to handle the falling animation and destruction of the GameObject.
-        /// </summary>
-        /// <returns>IEnumerator for coroutine.</returns>
-        private IEnumerator FallAndDestroy()
+        private void StartTutorial()
         {
-            isFalling = true;
-            float elapsedTime = 0;
+            // Hide all buttons and logo/meta slot
+            SetMenuElementsActive(false);
 
-            // Perform the falling animation over the specified duration
-            while (elapsedTime < fallDuration)
+            // Start countdown and play tutorial director
+            StartCountdownAndPlay(tutorialDirector);
+        }
+
+        private void PlayMainSong()
+        {
+            // Hide all buttons and logo/meta slot
+            SetMenuElementsActive(false);
+
+            // Start countdown and play main song director
+            StartCountdownAndPlay(mainSongDirector);
+
+            // Enable score UI
+            if (scoreUI != null) scoreUI.SetActive(true);
+        }
+
+        private void QuitGame()
+        {
+            Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+
+        private void StartCountdownAndPlay(PlayableDirector director)
+        {
+            if (countdownUI != null)
             {
-                transform.position = Vector3.Lerp(fallStartPosition, fallEndPosition, elapsedTime / fallDuration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
+                countdownUI.OnCountdownFinished += () =>
+                {
+                    director.Play();
+                    director.stopped += OnDirectorStopped;
+                };
+                countdownUI.StartCountdown();
             }
+            else
+            {
+                director.Play();
+                director.stopped += OnDirectorStopped;
+            }
+        }
 
-            // Ensure the final position is set
-            transform.position = fallEndPosition;
-            Destroy(gameObject);
+        private void OnDirectorStopped(PlayableDirector director)
+        {
+            // Enable logo/meta slot
+            if (logoAndMetaSlot != null) logoAndMetaSlot.SetActive(true);
+
+            // Re-enable all buttons
+            SetMenuElementsActive(true);
+
+            // Disable score UI if it was enabled
+            if (scoreUI != null) scoreUI.SetActive(false);
+
+            director.stopped -= OnDirectorStopped;
+        }
+
+        private void SetMenuElementsActive(bool isActive)
+        {
+            if (playButton != null) playButton.SetActive(isActive);
+            if (tutorialButton != null) tutorialButton.SetActive(isActive);
+            if (quitButton != null) quitButton.SetActive(isActive);
+            if (logoAndMetaSlot != null) logoAndMetaSlot.SetActive(isActive);
         }
     }
 }

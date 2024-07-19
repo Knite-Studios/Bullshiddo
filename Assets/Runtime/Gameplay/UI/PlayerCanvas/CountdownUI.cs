@@ -7,7 +7,7 @@ namespace Oculus.Interaction.Bullshiddo
     /// <summary>
     /// Handles the UI that appears before a track starts.
     /// </summary>
-    public class CountdownUI : ActiveStateObserver, IActiveState
+    public class CountdownUI : MonoBehaviour
     {
         static readonly WaitForSeconds _oneSecond = new WaitForSeconds(1);
 
@@ -25,16 +25,15 @@ namespace Oculus.Interaction.Bullshiddo
 
         private bool _countingDown;
 
-        bool IActiveState.Active => _countingDown;
+        public event System.Action OnCountdownFinished;
 
-        protected override void HandleActiveStateChanged()
+        public void StartCountdown()
         {
-            if (Active) StartCountdown();
-        }
-
-        private void StartCountdown()
-        {
-            StartCoroutine(CountdownRoutine());
+            if (!_countingDown)
+            {
+                Debug.Log("Starting Countdown...");
+                StartCoroutine(CountdownRoutine());
+            }
         }
 
         private IEnumerator CountdownRoutine()
@@ -44,12 +43,15 @@ namespace Oculus.Interaction.Bullshiddo
             for (int i = _countdown; i > 0; i--)
             {
                 _countdownText.SetText(i.ToString());
+                Debug.Log($"Countdown: {i}");
                 yield return _oneSecond;
             }
             _countdownText.SetText("GO");
+            Debug.Log("Countdown finished: GO");
             yield return _oneSecond;
             _countdownParent.SetActive(false);
             _countingDown = false;
+            OnCountdownFinished?.Invoke();
         }
     }
 }

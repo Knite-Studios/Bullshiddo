@@ -25,10 +25,15 @@ namespace Oculus.Interaction.Bullshiddo
         [SerializeField]
         private ScoreKeeper _scoreKeeper;
 
-        private void Awake()
+        private void OnEnable()
         {
             _scoreKeeper.WhenChanged += UpdateScoreCardUI;
             UpdateScoreCardUI();
+        }
+
+        private void OnDisable()
+        {
+            _scoreKeeper.WhenChanged -= UpdateScoreCardUI;
         }
 
         private void UpdateScoreCardUI()
