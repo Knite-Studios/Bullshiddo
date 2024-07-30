@@ -10141,22 +10141,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -2863107455726432354, guid: b9709e956f126364b95eb10cf50cea0e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 07671dbabace9d04090bcdeb9a6cd396, type: 2}
-    - target: {fileID: 718193921643153591, guid: b9709e956f126364b95eb10cf50cea0e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 498c666184c6d254c9e7dc7e65028b24, type: 2}
     - target: {fileID: 919132149155446097, guid: b9709e956f126364b95eb10cf50cea0e, type: 3}
       propertyPath: m_Name
       value: Arcade
       objectReference: {fileID: 0}
-    - target: {fileID: 6136984974223324782, guid: b9709e956f126364b95eb10cf50cea0e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 07671dbabace9d04090bcdeb9a6cd396, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78787,6 +78775,10 @@ PrefabInstance:
     - target: {fileID: -6126886209115047234, guid: 23b3e338c352a434eb240c81bbc057e2, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6126886209115047234, guid: 23b3e338c352a434eb240c81bbc057e2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6126886209115047234, guid: 23b3e338c352a434eb240c81bbc057e2, type: 3}
       propertyPath: m_ReflectionProbeUsage
