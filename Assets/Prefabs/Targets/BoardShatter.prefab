@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1400907256805581816, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
@@ -23,10 +24,6 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[2].key
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2060686204077119156, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
-      propertyPath: m_SceneBindings.Array.data[2].value
-      value: 
-      objectReference: {fileID: 8446437385626291913}
     - target: {fileID: 2060686204858605811, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.031
@@ -356,15 +353,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2785268796354908857}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2060686204860487268, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4845897379184511172}
   m_SourcePrefab: {fileID: 100100000, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
 --- !u!1 &2785268796354908857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2060686204860487268, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
-  m_PrefabInstance: {fileID: 4196866780829254877}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2262476384338057553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2691932468123606412, guid: e5fb8632d683a1148909ead81d4dc652, type: 3}
   m_PrefabInstance: {fileID: 4196866780829254877}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &-4845897379184511172
@@ -379,23 +377,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7142b509583e024abd1c96e06fafefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delay: 2
---- !u!95 &8446437385626291913
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2262476384338057553}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  _delay: 0.25
