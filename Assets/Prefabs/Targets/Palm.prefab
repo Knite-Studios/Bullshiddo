@@ -5642,14 +5642,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2060686203056561516}
     m_Modifications:
-    - target: {fileID: 380321508328245688, guid: 5a1eea1e38c580d4e87dc89b81586b19, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 380321508328245688, guid: 5a1eea1e38c580d4e87dc89b81586b19, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 380321508328245689, guid: 5a1eea1e38c580d4e87dc89b81586b19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5693,18 +5685,6 @@ PrefabInstance:
     - target: {fileID: 380321508328245690, guid: 5a1eea1e38c580d4e87dc89b81586b19, type: 3}
       propertyPath: m_Name
       value: RetroParticle
-      objectReference: {fileID: 0}
-    - target: {fileID: 380321508606729168, guid: 5a1eea1e38c580d4e87dc89b81586b19, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 380321508825558295, guid: 5a1eea1e38c580d4e87dc89b81586b19, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 380321508825558295, guid: 5a1eea1e38c580d4e87dc89b81586b19, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
